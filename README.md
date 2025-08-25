@@ -79,3 +79,25 @@ location / {
 ## 更多支持
 - 交流QQ群：970103572
 - [Telegram](http://t.me/mcyofficial)
+
+## 使用 Docker Compose 快速启动
+
+示例使用 MySQL 8 与本项目 Dockerfile（PHP 8.1 Apache）。
+
+1. 构建并启动：
+   - Windows PowerShell（位于项目根目录）：
+     - docker compose up -d --build
+2. 访问：
+   - 前台：http://localhost:8080
+   - 后台安装完成后：http://localhost:8080/admin
+3. 默认数据库连接（已在容器内通过挂载覆盖 config/database.php）：
+   - 主机名：db
+   - 数据库：
+   - 用户名：
+   - 密码：
+4. 数据持久化：
+   - MySQL 数据保存在名为 db_data 的 Docker 卷中。
+
+如需修改数据库账号或库名，请同时编辑 docker-compose.yml 的环境变量与 config/database.docker.php，并重新启动：
+- docker compose down
+- docker compose up -d --build
